@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('goals', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->integer('size');
-            $table->boolean('is_man')->default(false);
-            $table->rememberToken();
+            $table->unsignedBigInteger('user_id')->index('user_id');
+            $table->integer('weight_goal')->nullable();
+            $table->integer('imc_goal')->nullable();
+            $table->integer('img_goal')->nullable();
+            $table->boolean('current')->default(false);
+            $table->boolean('success')->default(false);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('goals');
     }
 };
