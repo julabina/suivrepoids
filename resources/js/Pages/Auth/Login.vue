@@ -30,12 +30,18 @@ const submit = () => {
 </script>
 
 <template>
+    <div class="relative bg-gray-100 pt-5">
+        <Link :href="route('home')" class="absolute text-lg left-4 transition-colors hover:transition-colors hover:text-blue-800"><p>{{ '< retour' }}</p></Link>
+        <Link :href="route('register')" class="absolute text-lg text-blue-800 underline right-4 transition-colors hover:transition-colors hover:text-blue-900"><p>Créer un compte</p></Link>
+        <h1 class="text-center text-3xl font-semibold">Se connecter</h1>
+    </div>
     <GuestLayout>
-        <Head title="Log in" />
+        <Head title="Se connecter" />
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
         </div>
+
 
         <form @submit.prevent="submit">
             <div>
@@ -55,7 +61,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <InputLabel for="password" value="Mot de passe" />
 
                 <TextInput
                     id="password"
@@ -68,25 +74,27 @@ const submit = () => {
 
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
-
-            <div class="block mt-4">
+            
+            <!-- <div class="block mt-3">
                 <label class="flex items-center">
                     <Checkbox name="remember" v-model:checked="form.remember" />
                     <span class="ml-2 text-sm text-gray-600">Remember me</span>
                 </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
+            </div> -->
+            
+            <div class="flex flex-col mt-2">
                 <Link
                     v-if="canResetPassword"
                     :href="route('password.request')"
-                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                    Forgot your password?
+                    class="text-blue-800 text-sm pl-0.5 underline text-s hover:text-blue-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    >
+                    Mot de passe oublié ?
                 </Link>
+            </div>
 
-                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
+            <div class="flex items-center justify-center mt-7">
+                <PrimaryButton class="w-40" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    Se connecter
                 </PrimaryButton>
             </div>
         </form>
