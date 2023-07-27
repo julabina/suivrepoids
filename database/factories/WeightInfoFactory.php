@@ -20,8 +20,8 @@ class WeightInfoFactory extends Factory
         return [
             'user_id' => User::factory()->create(),
             'weight' => rand(76, 130),
-            'imc' => rand(24, 34),
-            'img' => rand(24, 34),
+            'bmi' => rand(24, 34),
+            'bfp' => rand(24, 34),
             'record_date' => now(),
         ];
     }
