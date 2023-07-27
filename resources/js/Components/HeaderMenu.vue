@@ -1,0 +1,22 @@
+<template>
+    <div class="flex justify-between max-w-7xl mx-auto h-full px-8">
+        <Link :href="route('home')"><section class="flex items-center h-full">
+            <img src="../../assets/weight-icon.jpg" alt="app icon" class="h-5 mr-1.5">
+            <h1 class="uppercase font-semibold text-2xl">Suivrepoids.fr</h1>
+        </section></Link>
+        <section v-if="$page.props.auth.user" class="flex items-center">
+            <Link :href="route('logout')"><button class="btn-primary py-1.5 px-3 text-sm h-8">Se deconnecter</button></Link>
+            <Link :href="route('profile.edit')"><button class="flex justify-center items-center bg-primary rounded-full w-8 h-8 ml-3.5 transition-opacity hover:transition-opacity hover:opacity-80"><i class="fa-solid fa-user text-white text-lg" ></i></button></Link>
+        </section>
+        <section v-else class="flex items-center">
+            <Link :href="route('login')"><button class="btn-primary bg-white text-black py-1.5 px-3 text-sm">Se connecter</button></Link>
+            <Link :href="route('register')"><button class="btn-primary py-1.5 px-3 text-sm">Créer un compte</button></Link>
+        </section>
+    </div>
+</template>
+
+<script setup>
+import { Link } from '@inertiajs/vue3';
+
+
+</script>
