@@ -17,8 +17,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $id
  * @property int $user_id
  * @property int $weight
- * @property float $imc
- * @property float $img
+ * @property float $bmi
+ * @property float $bfp
  * @property Carbon $record_date
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -32,16 +32,16 @@ class WeightInfo extends Model
     protected $casts = [
         'user_id' => 'int',
         'weight' => 'int',
-        'imc' => 'float',
-        'img' => 'float',
+        'bmi' => 'float',
+        'bfp' => 'float',
         'record_date' => 'datetime',
     ];
 
     protected $fillable = [
         'user_id',
         'weight',
-        'imc',
-        'img',
+        'bmi',
+        'bfp',
         'record_date',
     ];
 

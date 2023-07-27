@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('size');
             $table->boolean('is_man')->default(false);
             $table->rememberToken();
+            $table->dateTime('birthday');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });

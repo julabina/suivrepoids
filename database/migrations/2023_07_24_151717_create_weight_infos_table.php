@@ -15,8 +15,8 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->index('user_id');
             $table->integer('weight');
-            $table->float('imc', 10, 0);
-            $table->float('img', 10, 0);
+            $table->float('bmi', 10, 0);
+            $table->float('bfp', 10, 0);
             $table->timestamp('record_date');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
