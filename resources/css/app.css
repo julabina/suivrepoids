@@ -38,4 +38,12 @@
     .input {
     @apply border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm h-12
     }
+
+    .cgu-title {
+        @apply text-2xl font-semibold my-10
+    }
+
+    .cgu-link {
+        @apply underline text-blue-800 hover:text-blue-900
+    }
 }
