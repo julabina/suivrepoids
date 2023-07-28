@@ -9,13 +9,8 @@ use Inertia\Response;
 
 class HomeController extends Controller
 {
-    public function show(Request $request): Response
+    public function show(): Response
     {
-        $logged = false;
-        if (Auth::check()) {
-            $logged = true;
-        }
-
-        return Inertia::render('Home');
+         return Inertia::render('Home');
     }
 }

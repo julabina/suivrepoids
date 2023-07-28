@@ -41,8 +41,22 @@
             </div>
         </section>
 
-        <section>
-            
+        <section class="flex flex-col items-center py-8">
+            <h2 class="subtitle mt-12 mb-16">Calculer votre IMC et votre IMG</h2>
+            <div class="flex items-center justify-between mb-10">
+                <div class="w-[900px] leading-6 tracking-wide">
+                    <p class="mb-2.5">L'indice de masse corporelle permet de rapidement évaluer votre corpulence avec votre poids et votre taille indépendamment de votre sexe.</p>
+                    <p>Pour connaitre le votre, rien de plus simple, il vous suffit de cliquer sur 'Calculer votre IMC'.</p>
+                </div>
+                <Link :href="route('calcul.bmi')" class="flex justify-center items-center w-36 h-36 ml-24 p-4 text-center font-semibold bg-gray-200 border border-gray-200 rounded transition-colors hover:transition-colors hover:bg-white hover:border-black">Calculer votre IMC</Link>
+            </div>
+            <div class="flex items-center justify-between mb-10">
+                <div class="w-[900px] leading-6 tracking-wide">
+                    <p class="mb-2.5">L'indice de masse grasse permet de définir la proportion de graisse dans le corps.</p>
+                    <p>Pour connaitre le votre, rien de plus simple, il vous suffit de cliquer sur 'Calculer votre IMG'.</p>
+                </div>
+                <Link :href="route('calcul.bfp')" class="flex justify-center items-center w-36 h-36 ml-24 p-4 text-center font-semibold bg-gray-200 border border-gray-200 rounded transition-colors hover:transition-colors hover:bg-white hover:border-black">Calculer votre IMG</Link>
+            </div>
         </section>
     </AuthenticatedLayout>
 </template>
