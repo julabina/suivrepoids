@@ -18,10 +18,32 @@
             </Link>
         </section>
 
-        <section class="h-screen" id="faq">
-            
+        <section id="faq" class="flex items-center justify-center py-28 w-full bg-gray-200">
+            <div class="relative w-96 h-96 bg-primary px-8 py-11 mr-4 text-white">
+                <h2 class="font-bold text-4xl mb-8">Comment ca marche ?</h2>
+                <p class="leading-6 tracking-wide">Suivrepoids.fr vous permet d'enregistrer régulièrement votre poids et de générer l'IMC et l'IMG automatiquement, vous pouvez suivre votre progression et réaliser vos objectifs.</p>
+                <Link :href="$page.props.auth.user ? route('dashboard') : route('register')" class="absolute flex justify-center bottom-10 left-0 right-0"><button class="btn-primary bg-primary2 p-2 transition-colors hover:opacity-100 hover:bg-white hover:text-primary hover:transition-colors">Commencer</button></Link>
+            </div>
+            <div class="flex flex-col justify-around items-center w-64 h-80 px-6 pt-7 pb-8 bg-white mx-4 transition-transform hover:transition-transform hover:scale-110">
+                <i class="text-4xl text-primary fa-solid fa-weight-scale"></i>
+                <h3 class="font-semibold">Atteindre votre objectif</h3>
+                <p class="leading-6 tracking-wide text-center">Choisissez un objectif, puis observer votre évolution.</p>
+            </div>
+            <div class="flex flex-col justify-around items-center w-64 h-80 px-6 pt-7 pb-8 bg-white mx-4 transition-transform hover:transition-transform hover:scale-110">
+                <i class="text-4xl text-primary fa-solid fa-chart-line"></i>
+                <h3 class="font-semibold">Suivre votre poids</h3>
+                <p class="leading-6 tracking-wide text-center">Entrez votre poids et suivez la progression de celui-ci.</p>
+            </div>
+            <div class="flex flex-col justify-around items-center w-64 h-80 px-6 pt-7 pb-8 bg-white ml-4 transition-transform hover:transition-transform hover:scale-110">
+                <i class="text-4xl text-primary fa-solid fa-euro-sign"></i>
+                <h3 class="font-semibold">100% Gratuit</h3>
+                <p class="leading-6 tracking-wide text-center">Suivrepoids.fr est entièrement gratuit et le restera.</p>
+            </div>
         </section>
 
+        <section>
+            
+        </section>
     </AuthenticatedLayout>
 </template>
     

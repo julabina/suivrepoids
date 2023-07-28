@@ -17,6 +17,7 @@ export default {
             },
             colors: {
                 primary: "#0C2E8A",
+                primary2: " #546CAD",
             },
             backgroundImage: {
                 'home-img': "url('./img/home.webp')",
