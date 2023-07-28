@@ -2,8 +2,6 @@
 
 namespace Tests\Feature;
 
-use function Pest\Laravel\actingAs;
-
 it('has a bmi page', function () {
     $this->get(route('calcul.bmi'))->assertOk();
 });
