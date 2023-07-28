@@ -18,6 +18,12 @@ export default {
             colors: {
                 primary: "#0C2E8A",
             },
+            backgroundImage: {
+                'home-img': "url('./img/home.webp')",
+            },
+            fontFamily: {
+                'roboto': ['Roboto', 'sans-serif']
+            }
         },
     },
 
