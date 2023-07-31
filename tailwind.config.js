@@ -23,7 +23,8 @@ export default {
                 'home-img': "url('./img/home.webp')",
             },
             fontFamily: {
-                'roboto': ['Roboto', 'sans-serif']
+                'roboto': ['Roboto', 'sans-serif'],
+                'fredoka': ['Fredoka One', 'cursive']
             }
         },
     },

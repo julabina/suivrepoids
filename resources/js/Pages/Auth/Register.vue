@@ -160,7 +160,7 @@
             <section class="flex mt-4">
                 <div class="w-64 mr-6">
                     <InputLabel for="registerSize" value="Taille en cm" />
-                    <input v-model="form.size" required type="number" id="registerSize" class="input [appearance:textfield]">
+                    <input v-model="form.size" required min="90" max="260" type="number" id="registerSize" class="input [appearance:textfield]">
                     <span v-for="(error, ind) in v$.size.$errors" :key="'errorSize' + ind" class="text-error pl-0.5">
                         {{ error.$message }}
                     </span>
@@ -168,7 +168,7 @@
 
                 <div class="w-64">
                     <InputLabel for="registerWeight" value="Votre poids actuel" />
-                    <input v-model="form.weight" required type="number" id="registerWeight" class="input [appearance:textfield]">
+                    <input v-model="form.weight" required min="30" max="260" type="number" id="registerWeight" class="input [appearance:textfield]">
                     <span v-for="(error, ind) in v$.weight.$errors" :key="'errorWeight' + ind" class="text-error pl-0.5">
                         {{ error.$message }}
                     </span>
