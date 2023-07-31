@@ -22,16 +22,28 @@ class CalculController extends Controller
             $weightMin = ceil(($size * $size) * 18.5);
             $weightMax = floor(($size * $size) * 25);
         }
-
+        
         return Inertia::render('Bmi', [
             'bmi' => $bmi,
             'weightMin' => $weightMin,
             'weightMax' => $weightMax,
         ]);
     }
-
-    public function bfp(): Response
+    
+    public function bfp(Request $request): Response
     {
-        return Inertia::render('Bfp');
+        $bfp = null;
+        $bmi = null;
+    
+        if ($request->user() !== null) {
+            $info = WeightInfo::where('user_id', $request->user()->id)->orderBy('record_date', 'desc')->with('user')->first(); 
+            $bmi = $info->bmi;
+            $bfp = $info->bfp;
+        }
+
+        return Inertia::render('Bfp', [
+            'bmi' => $bmi,
+            'bfp' => $bfp,
+        ]);
     }
 }

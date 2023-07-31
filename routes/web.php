@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'show'])->name('home');
-Route::get('/imc', [CalculController::class, 'bmi'])->name('calcul.bmi');
-Route::get('/img', [CalculController::class, 'bfp'])->name('calcul.bfp');
+Route::get('/bmi', [CalculController::class, 'bmi'])->name('calcul.bmi');
+Route::get('/bfp', [CalculController::class, 'bfp'])->name('calcul.bfp');
 Route::get('/about', [LegalsController::class, 'about'])->name('legals.about');
 Route::get('/cgu', [LegalsController::class, 'cgu'])->name('legals.cgu');
 Route::get('/contact', [LegalsController::class, 'contact'])->name('legals.contact');
