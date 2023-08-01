@@ -297,7 +297,7 @@
                 bfp = (1.2*bmi)+(0.23*form.age)-(10.8*0)-5.4;
             }
 
-            bfpResult.value = Math.floor(bfp);
+            bfpResult.value = Math.floor(bfp*10)/10;
         }
     };
 

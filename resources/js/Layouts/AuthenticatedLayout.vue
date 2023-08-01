@@ -26,7 +26,7 @@ const showingNavigationDropdown = ref(false);
             </header>
 
             <!-- Page Content -->
-            <main class="">
+            <main class="min-h-screen">
                 <slot />
             </main>
             <Footer/>

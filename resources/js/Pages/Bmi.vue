@@ -138,7 +138,7 @@
             const formatSize = form.size / 100;
             const bmi = form.weight / (formatSize*formatSize);
 
-            bmiResult.value = Math.floor(bmi); 
+            bmiResult.value = Math.floor(bmi*10)/10; 
         }
     };
 </script>
