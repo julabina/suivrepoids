@@ -17,8 +17,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $id
  * @property int $user_id
  * @property int|null $weight_goal
- * @property int|null $imc_goal
- * @property int|null $img_goal
+ * @property int|null $bmi_goal
+ * @property int|null $bfp_goal
  * @property bool $current
  * @property bool $success
  * @property Carbon $created_at
@@ -33,8 +33,8 @@ class Goal extends Model
     protected $casts = [
         'user_id' => 'int',
         'weight_goal' => 'int',
-        'imc_goal' => 'int',
-        'img_goal' => 'int',
+        'bmi_goal' => 'int',
+        'bfp_goal' => 'int',
         'current' => 'bool',
         'success' => 'bool',
     ];
@@ -42,8 +42,8 @@ class Goal extends Model
     protected $fillable = [
         'user_id',
         'weight_goal',
-        'imc_goal',
-        'img_goal',
+        'bmi_goal',
+        'bfp_goal',
         'current',
         'success',
     ];

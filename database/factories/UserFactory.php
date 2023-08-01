@@ -24,6 +24,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => Hash::make('Azerty123'),
             'size' => 180,
+            'is_man' => true,
             'birthday' => fake()->dateTimeBetween('-75 years', '-20 years'),
             'remember_token' => Str::random(10),
         ];

@@ -16,9 +16,9 @@ class CalculateService
         $formatBMI = number_format($bmi, 0);
 
         if ($isMale === true) {
-            return (1.2 * $bmi) + (0.23 * $age) - (10.8 * 1) - 5.4;
+            return floatval(number_format(((1.2 * $bmi) + (0.23 * $age) - (10.8 * 1) - 5.4), 2));
         } else {
-            return (1.2 * $bmi) + (0.23 * $age) - (10.8 * 0) - 5.4;
+            return floatval(number_format(((1.2 * $bmi) + (0.23 * $age) - (10.8 * 0) - 5.4), 2));
         }
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CalculController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GoalController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LegalsController;
 use App\Http\Controllers\ProfileController;
@@ -28,6 +29,9 @@ Route::get('/contact', [LegalsController::class, 'contact'])->name('legals.conta
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
+    Route::get('/goals', [GoalController::class, 'show'])->name('goal.show');
+    Route::post('/goal', [GoalController::class, 'store'])->name('goal.store');
+    Route::post('/weight', [DashboardController::class, 'store'])->name('weight.store');
 });
 
 Route::middleware('auth')->group(function () {
