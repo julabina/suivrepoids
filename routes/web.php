@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/goals', [GoalController::class, 'show'])->name('goal.show');
     Route::post('/goal', [GoalController::class, 'store'])->name('goal.store');
     Route::post('/weight', [DashboardController::class, 'store'])->name('weight.store');
+    Route::delete('/weight/{id}', [DashboardController::class, 'delete'])->name('weight.delete');
 });
 
 Route::middleware('auth')->group(function () {

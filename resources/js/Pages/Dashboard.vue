@@ -46,7 +46,16 @@
                 </div>
             </div>
             <div class="bg-white rounded-sm shadow-xl p-8 h-full min-h-[250px]">
-
+                <ul v-if="tab === 'list'">
+                    <li class="py-1.5 flex justify-between border-b border-gray-400 mb-1">
+                        <p class="font-semibold text-center w-1/5">Date</p>
+                        <p class="font-semibold text-center w-1/5">Poids</p>
+                        <p class="font-semibold text-center w-1/5">IMC</p>
+                        <p class="font-semibold text-center w-1/5">IMG</p>
+                        <p class="w-1/5"></p>
+                    </li>
+                    <WeightLog v-for="(log, ind) in infos" :key="'weightLog' + ind" :log="log" :index="ind" />
+                </ul>
             </div>
         </section>
 
@@ -63,7 +72,8 @@
 </template>
     
 <script setup>
-    import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+    import WeightLog from '@/Components/WeightLog.vue';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
     import { Head, Link, useForm } from '@inertiajs/vue3';
     import { onMounted, ref } from 'vue';
 

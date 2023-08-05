@@ -34,7 +34,6 @@ it('create new weight with goal is achieved', function () {
 
     $goalUpdated = Goal::where('id', $goal->id)->first();
     $infos = WeightInfo::where('weight', 81)->where('user_id', $user->id)->first();
-    echo $goalUpdated->success;
 
     expect($goalUpdated->success)->toBe(true);
     expect($infos->user_id)->toBe($user->id);
@@ -70,4 +69,19 @@ it('create new weight with goal is not achieved', function () {
     expect($infos->weight)->toBe(82);
     expect($infos->bmi)->toBe(25.31);
     expect($infos->bfp)->toBe(22.68);
+});
+
+it('delete one weight log', function () {
+    $log = WeightInfo::factory()->create();
+
+    actingAs(User::factory()->create())
+        ->delete(
+            uri: route('weight.delete', [
+                'id' => $log->id,
+            ]),
+        );
+
+    $logFind = WeightInfo::find($log->id);
+
+    expect($logFind)->toBe(null);
 });

@@ -70,4 +70,15 @@ class DashboardController extends Controller
 
         return back();
     }
+
+    public function delete(int $id, Request $request): RedirectResponse
+    {
+        $log = WeightInfo::find($id);
+
+        if ($log !== null) {
+            $log->delete();
+        }
+
+        return back();
+    }
 }
