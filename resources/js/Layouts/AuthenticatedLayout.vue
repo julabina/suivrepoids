@@ -26,7 +26,7 @@ const showingNavigationDropdown = ref(false);
             </header>
 
             <!-- Page Content -->
-            <main class="min-h-screen">
+            <main class="min-h-screen font-roboto">
                 <slot />
             </main>
             <Footer/>

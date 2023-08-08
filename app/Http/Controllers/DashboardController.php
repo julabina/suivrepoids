@@ -15,19 +15,20 @@ class DashboardController extends Controller
 {
     public function show(Request $request): Response
     {
-        $infos = WeightInfo::where('user_id', $request->user()->id)->orderBy('record_date', 'desc')->get();
+        $infos = WeightInfo::where('user_id', $request->user()->id)->orderBy('record_date', 'desc')->get()->toArray();
         $goal = Goal::where('user_id', $request->user()->id)->where('current', true)->first();
-        $weightYears = array();
+        $weightYears = [];
 
         foreach ($infos as $key => $info) {
-            $infoDate = explode('-', $info->record_date);
+            $infoDate = explode('-', $info['record_date']);
             $weightYears[] = $infoDate[0];
         }
 
         $years = array_unique($weightYears);
 
         return Inertia::render('Dashboard', [
-            'infos' => $infos,
+            'infos' => array_values($infos),
+            'lastInfo' => $infos[0],
             'goal' => $goal,
             'years' => $years,
         ]);

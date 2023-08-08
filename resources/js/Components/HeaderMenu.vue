@@ -29,6 +29,8 @@
         
         if (currentUrl === '/bmi' || currentUrl === "/bfp") {
             calculPage.value = currentUrl.slice(1);
+        } else if (currentUrl === '/goals') {
+            calculPage.value = currentUrl.slice(1);
         }
-    })
+    });
 </script>

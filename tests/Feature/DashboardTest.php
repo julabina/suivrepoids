@@ -8,7 +8,12 @@ use App\Models\WeightInfo;
 use function Pest\Laravel\actingAs;
 
 it('has a dashboard page', function () {
-    actingAs(User::factory()->create());
+    $user = User::factory()->create();
+    WeightInfo::factory()->create([
+        'user_id' => $user->id,
+    ]);
+
+    actingAs($user);
 
     $this->get(route('dashboard'))->assertOk();
 });

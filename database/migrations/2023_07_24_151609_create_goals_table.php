@@ -15,8 +15,8 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->index('user_id');
             $table->integer('weight_goal')->nullable();
-            $table->integer('imc_goal')->nullable();
-            $table->integer('img_goal')->nullable();
+            $table->integer('bmi_goal')->nullable();
+            $table->integer('bfp_goal')->nullable();
             $table->boolean('current')->default(false);
             $table->boolean('success')->default(false);
             $table->timestamp('created_at')->useCurrent();

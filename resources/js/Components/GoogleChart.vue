@@ -16,7 +16,8 @@
 </template>
 
 <script setup>
-    import { reactive, ref, onMounted } from 'vue';
+    import { onBeforeMount } from 'vue';
+import { reactive, ref, onMounted } from 'vue';
     import { GChart } from 'vue-google-charts';
 
     const options = reactive({
@@ -31,14 +32,21 @@
 
     const data = ref([]);
     const filteredData = ref([]);
+    const reverseInfos = ref([]);
 
     const props = defineProps({
         infos: Array,
         years: Array,
     });
 
+    onBeforeMount(() => {
+        reverseInfos.value = props.infos.reverse();
+    });
+
     onMounted(() => {
-        if (props.infos.length > 0) {
+        console.log(props.infos);
+        console.log(reverseInfos.value);
+        if (reverseInfos.value.length > 0) {
             let tempArr = [
                 ['Date', 'Poids']
             ];
@@ -47,7 +55,7 @@
             ];
             const currentDate = new Date();
 
-            props.infos.forEach(el => {
+            reverseInfos.value.forEach(el => {
                 const date = new Date(el.record_date);
                 const timestampDate = Date.parse(el.record_date);
                 const result = currentDate.getTime() - timestampDate;
@@ -97,7 +105,7 @@
         } else {
             const slicedOption = option.slice(6);
            
-            const filteredByYearsArr = props.infos.filter(el => {
+            const filteredByYearsArr = reverseInfos.value.filter(el => {
                 const splitedDate = el.record_date.split('-');
                 
                 if(splitedDate[0] === slicedOption) {
@@ -119,10 +127,10 @@
             return filteredData.value = tempFilteredArr;;
         }
 
-        if (props.infos.length > 0) {
+        if (reverseInfos.value.length > 0) {
             const currentDate = new Date();
 
-            props.infos.forEach(el => {
+            reverseInfos.value.forEach(el => {
                 const date = new Date(el.record_date);
                 const timestampDate = Date.parse(el.record_date);
                 const result = currentDate.getTime() - timestampDate;
