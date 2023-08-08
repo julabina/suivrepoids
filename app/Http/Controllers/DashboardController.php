@@ -17,10 +17,19 @@ class DashboardController extends Controller
     {
         $infos = WeightInfo::where('user_id', $request->user()->id)->orderBy('record_date', 'desc')->get();
         $goal = Goal::where('user_id', $request->user()->id)->where('current', true)->first();
+        $weightYears = array();
+
+        foreach ($infos as $key => $info) {
+            $infoDate = explode('-', $info->record_date);
+            $weightYears[] = $infoDate[0];
+        }
+
+        $years = array_unique($weightYears);
 
         return Inertia::render('Dashboard', [
             'infos' => $infos,
             'goal' => $goal,
+            'years' => $years,
         ]);
     }
 

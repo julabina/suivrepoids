@@ -56,9 +56,13 @@
                     </li>
                     <WeightLog v-for="(log, ind) in infos" :key="'weightLog' + ind" :log="log" :index="ind" />
                 </ul>
+                <div v-else-if="tab === 'chart'" class="">
+                    <GoogleChart :infos="infos" :years="years"/>
+                </div>
             </div>
         </section>
 
+        <!-- ADD NEW WEIGHT MODAL START -->
         <div v-if="toggleModal === true" class="fixed top-0 bottom-0 left-0 right-0 bg-black bg-opacity-75 z-50">
             <form @submit.prevent="addWeight" class="absolute flex flex-col items-center left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/3 p-6 bg-white rounded-xs">
                 <i @click="toggleModal = false" class="fa-solid fa-xmark absolute top-4 right-5 cursor-pointer transition-opacity hover:transition-opacity hover:opacity-60"></i>
@@ -72,14 +76,16 @@
 </template>
     
 <script setup>
+    import GoogleChart from '@/Components/GoogleChart.vue';
     import WeightLog from '@/Components/WeightLog.vue';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+    import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
     import { Head, Link, useForm } from '@inertiajs/vue3';
     import { onMounted, ref } from 'vue';
 
     const props = defineProps({
         infos: Array,
         goal: Object,
+        years: Array,
     });
 
     const form = useForm({
