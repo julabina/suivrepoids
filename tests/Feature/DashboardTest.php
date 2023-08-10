@@ -5,17 +5,50 @@ namespace Tests\Feature;
 use App\Models\Goal;
 use App\Models\User;
 use App\Models\WeightInfo;
+use Inertia\Testing\AssertableInertia;
 use function Pest\Laravel\actingAs;
 
-it('has a dashboard page', function () {
+it('display the dashboard page if user is logged', function () {
     $user = User::factory()->create();
-    WeightInfo::factory()->create([
+    $info = WeightInfo::factory()->create([
         'user_id' => $user->id,
+    ]);
+    $goals = Goal::factory()->create([
+        'user_id' => $user->id,
+        'current' => true,
     ]);
 
     actingAs($user);
 
-    $this->get(route('dashboard'))->assertOk();
+    $response = $this->get(route('dashboard'));
+
+    $infos = WeightInfo::where('user_id', $user->id)->orderBy('record_date', 'desc')->get()->toArray();
+    $goal = Goal::where('user_id', $user->id)->where('current', true)->first();
+    $weightYears = [];
+
+    $infos[0]['bfp'] = intval($infos[0]['bfp']);
+    $infos[0]['bmi'] = intval($infos[0]['bmi']);
+
+    foreach ($infos as $key => $info) {
+        $infoDate = explode('-', $info['record_date']);
+        $weightYears[] = $infoDate[0];
+    }
+
+    $years = array_unique($weightYears);
+
+    $response
+        ->assertOk()
+        ->assertInertia(fn (AssertableInertia $page) => $page
+            ->component('Dashboard')
+            ->where('infos', array_values($infos))
+            ->where('lastInfo', $infos[0])
+            ->where('goal', $goal)
+            ->where('years', $years)
+        );
+});
+
+it('display the dashboard page if user is not logged', function () {
+    $this->get(route('dashboard'))->assertStatus(302);
 });
 
 it('create new weight with goal is achieved', function () {

@@ -21,4 +21,13 @@ class CalculateService
             return floatval(number_format(((1.2 * $bmi) + (0.23 * $age) - (10.8 * 0) - 5.4), 2));
         }
     }
+
+    public function calculAge(string $birthday): float
+    {
+        $currentTimestamp = time();
+
+        $birthToNow = $currentTimestamp - strtotime($birthday);
+
+        return floor($birthToNow / 31536000);
+    }
 }

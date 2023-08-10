@@ -32,25 +32,20 @@ class GoalController extends Controller
 
         $currentGoal = Goal::where('user_id', $request->user()->id)->where('current', true)->first();
 
+        $goalData = [
+            'user_id' => $request->user()->id,
+            'current' => true,
+        ];
+
         if ($request->goalType === 'weight') {
-            Goal::create([
-                'user_id' => $request->user()->id,
-                'weight_goal' => $request->value,
-                'current' => true,
-            ]);
+            $goalData['weight_goal'] = $request->value;
         } elseif ($request->goalType === 'bmi') {
-            Goal::create([
-                'user_id' => $request->user()->id,
-                'bmi_goal' => $request->value,
-                'current' => true,
-            ]);
+            $goalData['bmi_goal'] = $request->value;
         } else {
-            Goal::create([
-                'user_id' => $request->user()->id,
-                'bfp_goal' => $request->value,
-                'current' => true,
-            ]);
+            $goalData['bfp_goal'] = $request->value;
         }
+
+        Goal::create($goalData);
 
         if ($currentGoal !== null) {
             $currentGoal->current = false;

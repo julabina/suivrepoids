@@ -40,11 +40,9 @@ class DashboardController extends Controller
             'weight' => 'required|integer|min:30|max:260',
         ]);
 
-        $currentTimestamp = time();
         $currentDate = Carbon::now();
-        $birthToNow = $currentTimestamp - strtotime($request->user()->birthday);
-        $age = floor($birthToNow / 31536000);
 
+        $age = $calculateService->calculAge($request->user()->birthday);
         $bmi = $calculateService->calculBMI($request->weight, $request->user()->size);
         $bfp = $calculateService->calculBFP($request->user()->is_man, $bmi, intval($age));
 

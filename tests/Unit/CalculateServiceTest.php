@@ -17,7 +17,7 @@ it('calculBMI returns the correct BMI', function () {
 
     // Check if the actual and expected BMI values match
     expect($actualBMI)->toBe((float) $expectedBMI);
-    
+
 });
 
 it('calculBFP returns the correct BFP for a male', function () {
@@ -59,4 +59,18 @@ it('calculBFP returns the correct BFP for a female', function () {
 
     // Check if the actual and expected BFP values match
     expect($actualBFP)->toBe((float) $expectedBFP);
+});
+
+it('calculAge returns the correct age', function () {
+    $calculateService = new CalculateService();
+
+    $birthday = '1986-08-07';
+    $currentTimestamp = time();
+    $birthToNow = $currentTimestamp - strtotime($birthday);
+
+    $expectAge = floor($birthToNow / 31536000);
+
+    $actualAge = $calculateService->calculAge($birthday);
+
+    expect($actualAge)->toBe($expectAge);
 });
