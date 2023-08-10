@@ -152,7 +152,7 @@
 
             const user = usePage().props.auth.user;
 
-            const age = calculAge(user.birthday);
+            const age = calculateAge(user.birthday);
 
             if(user.is_man === false) {
                 if(age < 25) {
@@ -301,7 +301,7 @@
         }
     };
 
-    const calculAge = (birthday) => {
+    const calculateAge = (birthday) => {
         return Math.abs(new Date(Date.now() - (birthday ? new Date(birthday) : new Date()).getTime()).getUTCFullYear() - 1970);
     };
 </script>

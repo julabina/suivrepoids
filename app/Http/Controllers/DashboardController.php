@@ -42,9 +42,9 @@ class DashboardController extends Controller
 
         $currentDate = Carbon::now();
 
-        $age = $calculateService->calculAge($request->user()->birthday);
-        $bmi = $calculateService->calculBMI($request->weight, $request->user()->size);
-        $bfp = $calculateService->calculBFP($request->user()->is_man, $bmi, intval($age));
+        $age = $calculateService->calculateAge($request->user()->birthday);
+        $bmi = $calculateService->calculateBMI($request->weight, $request->user()->size);
+        $bfp = $calculateService->calculateBFP($request->user()->is_man, $bmi, intval($age));
 
         $newWeight = WeightInfo::create([
             'user_id' => $request->user()->id,

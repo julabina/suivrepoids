@@ -63,8 +63,8 @@ class RegisteredUserController extends Controller
         $birthToNow = $currentTimestamp - strtotime($request->birthday);
         $age = floor($birthToNow / 31536000);
 
-        $bmi = $calculateService->calculBMI($request->weight, $request->size);
-        $bfp = $calculateService->calculBFP($isMan, $bmi, intval($age));
+        $bmi = $calculateService->calculateBMI($request->weight, $request->size);
+        $bfp = $calculateService->calculateBFP($isMan, $bmi, intval($age));
 
         $user = User::create([
             'name' => $request->name,

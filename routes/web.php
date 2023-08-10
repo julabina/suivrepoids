@@ -26,6 +26,7 @@ Route::get('/bfp', [CalculController::class, 'bfp'])->name('calcul.bfp');
 Route::get('/about', [LegalsController::class, 'about'])->name('legals.about');
 Route::get('/cgu', [LegalsController::class, 'cgu'])->name('legals.cgu');
 Route::get('/contact', [LegalsController::class, 'contact'])->name('legals.contact');
+Route::post('/contact', [LegalsController::class, 'sendMessage'])->name('legals.sendMessage');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');

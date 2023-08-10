@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use App\Services\CalculateService;
 
-it('calculBMI returns the correct BMI', function () {
+it('calculateBMI returns the correct BMI', function () {
     $calculateService = new CalculateService();
 
     // Calculate the expected BMI manually based on the inputs
@@ -13,14 +13,14 @@ it('calculBMI returns the correct BMI', function () {
     $expectedBMI = number_format($weight / (($size / 100) * ($size / 100)), 2);
 
     // Calculate the actual BMI using the method
-    $actualBMI = $calculateService->calculBMI($weight, $size);
+    $actualBMI = $calculateService->calculateBMI($weight, $size);
 
     // Check if the actual and expected BMI values match
     expect($actualBMI)->toBe((float) $expectedBMI);
 
 });
 
-it('calculBFP returns the correct BFP for a male', function () {
+it('calculateBFP returns the correct BFP for a male', function () {
     $calculateService = new CalculateService();
 
     // Inputs
@@ -35,13 +35,13 @@ it('calculBFP returns the correct BFP for a male', function () {
     );
 
     // Calculate the actual BFP using the method
-    $actualBFP = $calculateService->calculBFP($isMale, $bmi, $age);
+    $actualBFP = $calculateService->calculateBFP($isMale, $bmi, $age);
 
     // Check if the actual and expected BFP values match
     expect($actualBFP)->toBe((float) $expectedBFP);
 });
 
-it('calculBFP returns the correct BFP for a female', function () {
+it('calculateBFP returns the correct BFP for a female', function () {
     $calculateService = new CalculateService();
 
     // Inputs
@@ -55,13 +55,13 @@ it('calculBFP returns the correct BFP for a female', function () {
     );
 
     // Calculate the actual BFP using the method
-    $actualBFP = $calculateService->calculBFP($isMale, $bmi, $age);
+    $actualBFP = $calculateService->calculateBFP($isMale, $bmi, $age);
 
     // Check if the actual and expected BFP values match
     expect($actualBFP)->toBe((float) $expectedBFP);
 });
 
-it('calculAge returns the correct age', function () {
+it('calculateAge returns the correct age', function () {
     $calculateService = new CalculateService();
 
     $birthday = '1986-08-07';
@@ -70,7 +70,7 @@ it('calculAge returns the correct age', function () {
 
     $expectAge = floor($birthToNow / 31536000);
 
-    $actualAge = $calculateService->calculAge($birthday);
+    $actualAge = $calculateService->calculateAge($birthday);
 
     expect($actualAge)->toBe($expectAge);
 });
