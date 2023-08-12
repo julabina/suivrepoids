@@ -62,6 +62,8 @@
             </div>
         </section>
 
+       <!-- <MultiplexAds /> -->
+
         <!-- ADD NEW WEIGHT MODAL START -->
         <div v-if="toggleModal === true" class="fixed top-0 bottom-0 left-0 right-0 bg-black bg-opacity-75 z-50">
             <form v-if="alreadyNewWeight === false" @submit.prevent="addWeight" class="absolute flex flex-col items-center left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/3 p-6 bg-white rounded-xs">
@@ -81,6 +83,7 @@
     
 <script setup>
     import GoogleChart from '@/Components/GoogleChart.vue';
+    import MultiplexAds from '@/Components/MultiplexAds.vue';
     import WeightLog from '@/Components/WeightLog.vue';
     import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
     import { Head, Link, useForm } from '@inertiajs/vue3';

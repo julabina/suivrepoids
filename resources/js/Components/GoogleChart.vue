@@ -44,8 +44,6 @@ import { reactive, ref, onMounted } from 'vue';
     });
 
     onMounted(() => {
-        console.log(props.infos);
-        console.log(reverseInfos.value);
         if (reverseInfos.value.length > 0) {
             let tempArr = [
                 ['Date', 'Poids']
