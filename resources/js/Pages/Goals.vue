@@ -79,7 +79,6 @@
         let goalValue = null;
 
         if (goalTab.value === 'weight') {
-            console.log('12');
             goalValue = goalWeight.value;
         } else if (goalTab.value === 'bmi') {
             goalValue = goalBmi.value;    

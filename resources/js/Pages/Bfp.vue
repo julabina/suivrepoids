@@ -289,16 +289,14 @@
         if (result) {   
             const formatSize = form.size / 100;
             const bmi = Math.floor(form.weight / (formatSize*formatSize));
-            let bfp;
+            let bfp = calculateBFP(bmi, form.sexe, form.age);
 
-            if(form.sexe === "man") {
-                bfp = (1.2*bmi)+(0.23*form.age)-(10.8*1)-5.4;
-            } else if(form.sexe === "woman") {
-                bfp = (1.2*bmi)+(0.23*form.age)-(10.8*0)-5.4;
-            }
-
-            bfpResult.value = Math.floor(bfp*10)/10;
+            return bfpResult.value = Math.floor(bfp*10)/10;
         }
+    };
+
+    const calculateBFP = (bmi, sexe, age) => {
+            return (1.2*bmi)+(0.23*age)-(10.8*(sexe === 'man' ? 1 : 0))-5.4;
     };
 
     const calculateAge = (birthday) => {

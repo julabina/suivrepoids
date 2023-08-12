@@ -5,8 +5,8 @@ namespace Tests\Feature;
 use App\Models\Goal;
 use App\Models\User;
 use App\Models\WeightInfo;
-use Inertia\Testing\AssertableInertia;
 use App\Services\CalculateService;
+use Inertia\Testing\AssertableInertia;
 use function Pest\Laravel\actingAs;
 
 it('display the dashboard page if user is logged', function () {
@@ -52,14 +52,14 @@ it('display the dashboard page if user is not logged', function () {
     $this->get(route('dashboard'))->assertStatus(302);
 });
 
-function createAndTestNewWeight(User $user,Int $value,Bool $success, CalculateService $calculateService)
+function createAndTestNewWeight(User $user, int $value, bool $success, CalculateService $calculateService)
 {
     $goal = Goal::factory()->create([
         'user_id' => $user->id,
         'weight_goal' => 90,
         'current' => true,
     ]);
-    
+
     actingAs($user)
         ->post(
             uri: route('weight.store'),
@@ -87,9 +87,9 @@ it('create new weight with goal is achieved', function () {
     $user = User::factory()->create([
         'birthday' => '1986-08-07',
     ]);
-    
+
     $calculateService = app(CalculateService::class);
-    
+
     createAndTestNewWeight($user, 83, true, $calculateService);
 });
 
@@ -97,9 +97,9 @@ it('create new weight with goal is not achieved', function () {
     $user = User::factory()->create([
         'birthday' => '1986-08-07',
     ]);
-    
+
     $calculateService = app(CalculateService::class);
-    
+
     createAndTestNewWeight($user, 93, false, $calculateService);
 });
 
