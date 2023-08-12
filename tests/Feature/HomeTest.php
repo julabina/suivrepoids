@@ -5,12 +5,12 @@ namespace Tests\Feature;
 use App\Models\User;
 use function Pest\Laravel\actingAs;
 
-it('has a home page logged', function () {
+it('display the home page when user is logged in', function () {
     actingAs(User::factory()->create());
 
     $this->get(route('home'))->assertOk();
 });
 
-it('has a home page not logged', function () {
+it('display the home page when user is not logged in', function () {
     $this->get(route('home'))->assertOk();
 });

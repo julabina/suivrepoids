@@ -40,7 +40,7 @@ it('display the bmi page if user is logged', function () {
 });
 
 it('display the bfp page if the user is not logged', function () {
-    $response = $this->get(route('calcul.bfp'))->assertOk();
+    $response = $this->get(route('calcul.bfp'));
 
     $response
         ->assertOk()
@@ -60,7 +60,7 @@ it('display the bfp page if the user is logged', function () {
     ]);
     $this->actingAs($user);
 
-    $response = $this->get(route('calcul.bfp'))->assertOk();
+    $response = $this->get(route('calcul.bfp'));
 
     $response
         ->assertOk()

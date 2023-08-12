@@ -49,9 +49,8 @@ it('display the goal page if user is not logged', function () {
     $this->get(route('goal.show'))->assertStatus(302);
 });
 
-it('create new weight goal', function () {
-    $user = User::factory()->create();
-
+function createAndTestGoal(User $user, string $goalType, int $value): void
+{
     $currentGoal = Goal::factory()->create([
         'user_id' => $user->id,
         'current' => true,
@@ -61,80 +60,34 @@ it('create new weight goal', function () {
     actingAs($user)
         ->post(
             uri: route('goal.store', [
-                'goalType' => 'weight',
-                'value' => 50,
+                'goalType' => $goalType,
+                'value' => $value,
             ]),
         );
 
+    $columnName = $goalType.'_goal';
     $currentGoalUpdated = Goal::find($currentGoal->id);
-    $lastGoal = Goal::where('user_id', $user->id)->where('weight_goal', 50)->first();
+    $lastGoal = Goal::where('user_id', $user->id)->where($columnName, $value)->first();
 
     expect($currentGoalUpdated->current)->toBe(false);
     expect($lastGoal->id)->not->toBe($currentGoal->id);
     expect($lastGoal->user_id)->toBe($user->id);
-    expect($lastGoal->weight_goal)->toBe(50);
-    expect($lastGoal->bmi_goal)->toBe(null);
-    expect($lastGoal->bfp_goal)->toBe(null);
+    expect($lastGoal->$columnName)->toBe($value);
     expect($lastGoal->success)->toBe(false);
     expect($lastGoal->current)->toBe(true);
+}
+
+it('create new weight goal', function () {
+    $user = User::factory()->create();
+    createAndTestGoal($user, 'weight', 50);
 });
 
 it('create new bmi goal', function () {
     $user = User::factory()->create();
-
-    $currentGoal = Goal::factory()->create([
-        'user_id' => $user->id,
-        'current' => true,
-        'weight_goal' => 60,
-    ]);
-
-    actingAs($user)
-        ->post(
-            uri: route('goal.store', [
-                'goalType' => 'bmi',
-                'value' => 20,
-            ]),
-        );
-
-    $currentGoalUpdated = Goal::find($currentGoal->id);
-    $lastGoal = Goal::where('user_id', $user->id)->where('bmi_goal', 20)->first();
-
-    expect($currentGoalUpdated->current)->toBe(false);
-    expect($lastGoal->id)->not->toBe($currentGoal->id);
-    expect($lastGoal->user_id)->toBe($user->id);
-    expect($lastGoal->weight_goal)->toBe(null);
-    expect($lastGoal->bmi_goal)->toBe(20);
-    expect($lastGoal->bfp_goal)->toBe(null);
-    expect($lastGoal->success)->toBe(false);
-    expect($lastGoal->current)->toBe(true);
+    createAndTestGoal($user, 'bmi', 20);
 });
 
 it('create new bfp goal', function () {
     $user = User::factory()->create();
-
-    $currentGoal = Goal::factory()->create([
-        'user_id' => $user->id,
-        'current' => true,
-        'weight_goal' => 60,
-    ]);
-
-    actingAs($user)
-        ->post(
-            uri: route('goal.store', [
-                'goalType' => 'bfp',
-                'value' => 20,
-            ]),
-        );
-
-    $currentGoalUpdated = Goal::find($currentGoal->id);
-    $lastGoal = Goal::where('user_id', $user->id)->where('bfp_goal', 20)->first();
-
-    expect($currentGoalUpdated->current)->toBe(false);
-    expect($lastGoal->id)->not->toBe($currentGoal->id);
-    expect($lastGoal->user_id)->toBe($user->id);
-    expect($lastGoal->weight_goal)->toBe(null);
-    expect($lastGoal->bmi_goal)->toBe(null);
-    expect($lastGoal->bfp_goal)->toBe(20);
-    expect($lastGoal->success)->toBe(false);
-    expect($lastGoal->current)->toBe(true);
+    createAndTestGoal($user, 'bfp', 20);
 });

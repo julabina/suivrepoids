@@ -30,6 +30,6 @@ it('send contact message email', function () {
     );
 
     Mail::assertSent(ContactMail::class, function ($mail) {
-        return $mail->hasTo('julien.lenfume@gmail.com');
+        return  $mail->hasTo('julien.lenfume@gmail.com');
     });
 });
