@@ -5,7 +5,7 @@
         <template #header/>
 
         <section class="flex justify-center p-8">
-            <div class="max-w-7xl pt-20 px-24 leading-6 tracking-wide text-lg">
+            <div class="max-w-7xl pt-20 lg:px-24 leading-6 tracking-wide text-lg">
 
                 <h1 class="font-roboto text-center title text-4xl">Conditions Générales d'Utilisation</h1>
 
