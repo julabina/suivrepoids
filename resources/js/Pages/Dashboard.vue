@@ -6,23 +6,23 @@
 
         <h1 class="pt-24 text-center title uppercase text-3xl mb-14">Tableau de bord</h1>
         
-        <section class="flex mx-auto w-[810px] mb-8">
-            <div @click="toggleModal = true" class="flex flex-col items-center pt-6 bg-white rounded-sm shadow-xl w-1/3 h-36 mr-4 hover:border cursor-pointer">
+        <section class="flex flex-col md:flex-row mx-[4%] lg:mx-auto lg:w-[810px] md:mb-8">
+            <div @click="toggleModal = true" class="flex flex-col items-center pt-6 bg-white rounded-sm shadow-xl md:w-1/3 h-36 mb-8 md:mb-0 md:mr-4 hover:border cursor-pointer">
                 <h2 class="font-medium mb-3">Votre poids au {{ recordDate }}</h2>
                 <p class="font-bold text-3xl">{{ lastInfo.weight }}</p>
                 <p class="font-light text-xs">Cliquer pour ajouter un nouveau poids.</p>
             </div>
-            <Link :href="route('calcul.bmi')" class="bg-white rounded-sm shadow-xl w-1/3 h-36 mx-2 hover:border cursor-pointer"><div class="flex flex-col items-center pt-6 h-full">
+            <Link :href="route('calcul.bmi')" class="bg-white rounded-sm shadow-xl md:w-1/3 h-36 mb-8 md:mb-0 md:mx-2 hover:border cursor-pointer"><div class="flex flex-col items-center pt-6 h-full">
                 <h2 class="font-medium mb-3">Votre IMC</h2>
                 <p class="font-bold text-3xl">{{ lastInfo.bmi }}</p>
             </div></Link>
-            <Link :href="route('calcul.bfp')" class="bg-white rounded-sm shadow-xl w-1/3 h-36 ml-4 hover:border cursor-pointer"><div class="flex flex-col items-center pt-6 h-full">
+            <Link :href="route('calcul.bfp')" class="bg-white rounded-sm shadow-xl md:w-1/3 h-36 mb-8 md:mb-0 md:ml-4 hover:border cursor-pointer"><div class="flex flex-col items-center pt-6 h-full">
                 <h2 class="font-medium mb-3">Votre IMG</h2>
                 <p class="font-bold text-3xl">{{ lastInfo.bfp }}%</p>
             </div></Link>
         </section>
 
-        <Link :href="route('goal.show')"><section :class="goal.success === true ? 'flex flex-col items-center justify-between py-6 bg-green-400 rounded-sm shadow-xl w-[810px] mb-8 h-40 mx-auto hover:border cursor-pointer' : 'flex flex-col items-center justify-between py-6 bg-white rounded-sm shadow-xl w-[810px] mb-8 h-40 mx-auto hover:border cursor-pointer'">
+        <Link :href="route('goal.show')"><section :class="goal.success === true ? 'flex flex-col items-center justify-between px-4 md:px-0 py-6 bg-green-400 rounded-sm shadow-xl text-center lg:w-[810px] mb-8 md:h-40 mx-[4%] lg:mx-auto hover:border cursor-pointer' : 'flex flex-col items-center justify-between px-4 md:px-0 py-6 bg-white rounded-sm shadow-xl text-center lg:w-[810px] mb-8 md:h-40 mx-[4%] lg:mx-auto hover:border cursor-pointer'">
             <div v-if="goal === null" class="flex flex-col items-center">
                 <h2 class="font-medium">Vous pouvez définir un objectif ici !!</h2>
             </div>
@@ -36,23 +36,23 @@
             <p :class="goal === null ? 'pb-4 text-sm font-light' : 'text-sm font-light'">Cliquer pour définir un nouvel objectif!</p>
         </section></Link>
 
-        <section class="mx-auto w-[810px] mb-8">
+        <section class="mx-[4%] lg:mx-auto lg:w-[810px] mb-8">
             <div class="flex">
-                <div @click="tab = 'chart'" :class="tab === 'chart' ? 'flex justify-center items-center cursor-pointer w-40 h-12 bg-white rounded-sm' : 'flex justify-center items-center cursor-pointer w-40 h-12 bg-gray-300 rounded-sm'">
-                    <p>Graphique</p>
+                <div @click="tab = 'chart'" :class="tab === 'chart' ? 'flex justify-center items-center cursor-pointer w-1/2 sm:w-48 md:w-40 h-20 lg:h-12 bg-white rounded-sm' : 'flex justify-center items-center cursor-pointer w-1/2 sm:w-48 md:w-40 h-20 lg:h-12 bg-gray-300 rounded-sm'">
+                    <p class="font-semibold lg:font-normal">Graphique</p>
                 </div>
-                <div @click="tab = 'list'" :class="tab === 'list' ? 'flex justify-center items-center cursor-pointer w-40 h-12 bg-white rounded-sm' : 'flex justify-center items-center cursor-pointer w-40 h-12 bg-gray-300 rounded-sm'">
-                    <p>Liste</p>
+                <div @click="tab = 'list'" :class="tab === 'list' ? 'flex justify-center items-center cursor-pointer w-1/2 sm:w-48 md:w-40 h-20 lg:h-12 bg-white rounded-sm' : 'flex justify-center items-center cursor-pointer w-1/2 sm:w-48 md:w-40 h-20 lg:h-12 bg-gray-300 rounded-sm'">
+                    <p class="font-semibold lg:font-normal">Liste</p>
                 </div>
             </div>
-            <div class="bg-white rounded-sm shadow-xl p-8 h-full min-h-[250px]">
+            <div class="bg-white rounded-sm shadow-xl py-8 px-2 md:p-8 h-full min-h-[250px]">
                 <ul v-if="tab === 'list'">
                     <li class="py-1.5 flex justify-between border-b border-gray-400 mb-1">
-                        <p class="font-semibold text-center w-1/5">Date</p>
-                        <p class="font-semibold text-center w-1/5">Poids</p>
-                        <p class="font-semibold text-center w-1/5">IMC</p>
-                        <p class="font-semibold text-center w-1/5">IMG</p>
-                        <p class="w-1/5"></p>
+                        <p class="font-semibold text-center w-2/6 md:w-1/5">Date</p>
+                        <p class="font-semibold text-center w-1/6 md:w-1/5">Poids</p>
+                        <p class="font-semibold text-center w-1/6 md:w-1/5">IMC</p>
+                        <p class="font-semibold text-center w-1/6 md:w-1/5">IMG</p>
+                        <p class="w-1/6 md:w-1/5"></p>
                     </li>
                     <WeightLog v-for="(log, ind) in infos.reverse()" :key="'weightLog' + ind" :log="log" :index="ind" />
                 </ul>

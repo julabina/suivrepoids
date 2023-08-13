@@ -1,6 +1,6 @@
 <template>
     <div v-if="infos.length > 0">
-        <select v-model="timeChart" @change="filterData(timeChart)" class="h-8 py-0 mb-5">
+        <select v-model="timeChart" @change="filterData(timeChart)" class="h-11 md:h-8 py-0 mb-5 w-full">
             <option value="byTime1">1 mois</option>
             <option value="byTime2">2 mois</option>
             <option value="byTime3">3 mois</option>
@@ -24,7 +24,7 @@ import { reactive, ref, onMounted } from 'vue';
         title: 'Votre courbe de poids',
         hAxis: { title: 'Date', titleTextStyle: { color: '#333' } },
         vAxis: { minValue: 0 },
-        chartArea: { width: '70%', height: '70%' },
+        chartArea: { width: '75%', height: '70%' },
         height: 450,
     });
 
