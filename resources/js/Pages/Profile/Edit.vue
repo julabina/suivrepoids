@@ -23,18 +23,18 @@ defineProps({
         
 
         <div class="flex justify-center pt-24">
-            <div class="w-[810px] mx-auto sm:px-6 lg:px-8 space-y-6">
+            <div class="w-full lg:w-[810px] mx-[4%] lg:mx-auto sm:px-6 lg:px-8 space-y-6">
                 <Link :href="route('dashboard')" class="cgu-link pl-1.5">Retour au tableau de bord</Link>
                 <div class="flex justify-center p-4 sm:p-8 bg-white shadow-xl sm:rounded-sm">
                     <UpdateProfileInformationForm
                         :must-verify-email="mustVerifyEmail"
                         :status="status"
-                        class="max-w-xl"
+                        class="w-full lg:max-w-xl"
                     />
                 </div>
 
                 <div class="flex justify-center p-4 sm:p-8 bg-white shadow-xl sm:rounded-sm">
-                    <UpdatePasswordForm class="max-w-xl" />
+                    <UpdatePasswordForm class="w-full lg:max-w-xl" />
                 </div>
 
                 <!-- <div class="flex justify-center p-4 sm:p-8 bg-white shadow-xl sm:rounded-sm">

@@ -25,7 +25,7 @@ const form = useForm({
 <template>
     <section>
         <header>
-            <h2 class="text-lg font-medium text-gray-900">Modifier vos informations de profil</h2>
+            <h2 class="text-center text-lg font-medium text-gray-900">Modifier vos informations de profil</h2>
         </header>
 
         <form @submit.prevent="form.patch(route('profile.update'))" class="mt-6 space-y-6">
@@ -82,7 +82,7 @@ const form = useForm({
             </div>
 
             <div class="flex flex-col items-center gap-4">
-                <PrimaryButton :disabled="form.processing" class="px-3">Modifier</PrimaryButton>
+                <PrimaryButton :disabled="form.processing" class="px-3 w-full md:w-auto">Modifier</PrimaryButton>
 
                 <Transition
                     enter-active-class="transition ease-in-out"

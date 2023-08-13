@@ -4,9 +4,9 @@
     <AuthenticatedLayout>
         <template #header/>
 
-        <div class="pt-28">
-            <section class="flex flex-col items-center justify-between py-7 px-9 bg-white rounded-sm shadow-xl w-[600px] mb-12 mx-auto">
-                <h2 class="subtitle">Mon objectif actuel</h2>
+        <div class="pt-24 lg:pt-28">
+            <section class="flex flex-col items-center justify-between py-7 px-9 bg-white rounded-sm shadow-xl lg:w-[600px] mb-12 mx-[4%] lg:mx-auto">
+                <h2 class="subtitle text-center">Mon objectif actuel</h2>
                 <p class="flex justify-center items-center border border-black border-opacity-50 w-full h-14 mt-12 mb-4">
                     {{ 
                         goals[0].weight_goal !== null ?
@@ -19,8 +19,8 @@
                 </p>
             </section>
             
-            <section class="flex flex-col items-center justify-between py-7 px-9 bg-white rounded-sm shadow-xl w-[600px] mb-12 mx-auto">
-                <h2 class="subtitle mb-12">Changer d'objectif</h2>
+            <section class="flex flex-col items-center justify-between py-7 px-9 bg-white rounded-sm shadow-xl lg:w-[600px] mb-12 mx-[4%] lg:mx-auto">
+                <h2 class="subtitle text-center mb-12">Changer d'objectif</h2>
                 
                 <div class="flex flex-col w-full">
                     <div class="flex w-full">
@@ -41,17 +41,17 @@
                         </div>
                     </div>
                     <form @submit.prevent="handleGoals" class="flex flex-col items-center border-x border-b border-black border-opacity-50 w-full p-7">
-                        <h3 class="font-semibold mt-3">Entrer {{ goalTab === 'weight' ? 'le poids' : goalTab === 'bmi' ? 'l\'imc' : 'l\'img' }} que vous souhaitez atteindre</h3>
-                        <input v-model="goalWeight" v-if="goalTab === 'weight'" type="number" required :placeholder="'Votre poids actuel: ' + lastInfo.weight + ' kg'" min="30" max="260" class="input h-10 mt-7 [appearance:textfield] text-center w-56">
-                        <input v-model="goalBmi" v-else-if="goalTab === 'bmi'" type="number" required :placeholder="'Votre IMC actuel: ' + lastInfo.bmi" min="1" max="60" class="input h-10 mt-7 [appearance:textfield] text-center w-56">
-                        <input v-model="goalBfp" v-else type="number" required :placeholder="'Votre IMG actuel: ' + lastInfo.bfp + '%'" min="1" max="99" class="input h-10 mt-7 [appearance:textfield] text-center w-56">
-                        <button type="submit" class="btn-primary px-5 mt-9">Valider</button>    
+                        <h3 class="text-center font-semibold mt-3">Entrer {{ goalTab === 'weight' ? 'le poids' : goalTab === 'bmi' ? 'l\'imc' : 'l\'img' }} que vous souhaitez atteindre</h3>
+                        <input v-model="goalWeight" v-if="goalTab === 'weight'" type="number" required :placeholder="'Votre poids actuel: ' + lastInfo.weight + ' kg'" min="30" max="260" class="input h-14 md:h-10 mt-7 [appearance:textfield] text-center w-full md:w-56">
+                        <input v-model="goalBmi" v-else-if="goalTab === 'bmi'" type="number" required :placeholder="'Votre IMC actuel: ' + lastInfo.bmi" min="1" max="60" class="input h-14 md:h-10 mt-7 [appearance:textfield] text-center w-full md:w-56">
+                        <input v-model="goalBfp" v-else type="number" required :placeholder="'Votre IMG actuel: ' + lastInfo.bfp + '%'" min="1" max="99" class="input h-14 md:h-10 mt-7 [appearance:textfield] text-center w-full md:w-56">
+                        <button type="submit" class="w-full md:w-auto btn-primary px-5 mt-9">Valider</button>    
                     </form>
                 </div>
             </section>        
             
-            <section class="flex flex-col items-center justify-between py-7 px-9 bg-white rounded-sm shadow-xl w-[600px] mb-12 mx-auto">
-                <h2 class="subtitle mb-6">Mes anciens objectifs</h2>
+            <section class="flex flex-col items-center justify-between py-7 px-9 bg-white rounded-sm shadow-xl lg:w-[600px] mb-12 mx-[4%] lg:mx-auto">
+                <h2 class="subtitle text-center mb-6">Mes anciens objectifs</h2>
                 <Goal v-for="(goal, ind) in goals" :key="'goalCard' + ind" :goal="goal" />
             </section>        
         </div>

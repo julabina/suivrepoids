@@ -36,7 +36,7 @@ const updatePassword = () => {
 <template>
     <section>
         <header>
-            <h2 class="text-lg font-medium text-gray-900">Modifier votre mot de passe</h2>
+            <h2 class="text-lg text-center font-medium text-gray-900">Modifier votre mot de passe</h2>
         </header>
 
         <form @submit.prevent="updatePassword" class="mt-6 space-y-6">
@@ -85,7 +85,7 @@ const updatePassword = () => {
             </div>
 
             <div class="flex flex-col items-center gap-4">
-                <PrimaryButton :disabled="form.processing" class="px-3">Modifier</PrimaryButton>
+                <PrimaryButton :disabled="form.processing" class="px-3 w-full md:w-auto">Modifier</PrimaryButton>
 
                 <Transition
                     enter-active-class="transition ease-in-out"
