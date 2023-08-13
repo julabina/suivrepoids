@@ -6,14 +6,14 @@
 
         <h1 class="pt-24 mb-20 text-center text-primary font-black text-3xl font-fredoka">Calculer votre indice de masse graisseuse (IMG)</h1>
 
-        <section v-if="$page.props.auth.user" class="w-[600px] bg-white py-7 mx-auto text-center rounded-sm shadow-xl mb-12">
+        <section v-if="$page.props.auth.user" class="lg:w-[600px] bg-white p-7 mx-[4%] lg:mx-auto text-center rounded-sm shadow-xl mb-12">
             <p class="font-medium mb-1.5">Votre IMG est de</p>
             <span class="font-semibold text-3xl">{{ props.bfp }}%</span>
             <p class="mt-14 mb-1 font-medium">Avec votre IMG, vous etes (selon Deurenberg)</p>
             <span class="font-semibold text-lg">{{ userBfpStatus }}</span>
         </section>
 
-        <section  class="w-[600px] bg-white p-7 tracking-wide mx-auto rounded-sm shadow-xl mb-12 font-medium">
+        <section  class="lg:w-[600px] bg-white p-7 tracking-wide mx-[4%] lg:mx-auto rounded-sm shadow-xl mb-12 font-medium">
             <p class="mb-4">L'indice de masse grasse permet de définir la proportion de graisse dans le corps.</p>
             <p class="mb-4">Il se calcul en fonction du sexe et de l'age de l'individu, grace à la formule de Deurenberg.</p>
             <ul class="flex flex-col mb-4">
@@ -22,33 +22,33 @@
             </ul>
             <p class="mb-4">Pour connaitre le votre, rien de plus simple, il vous suffit de remplir les champs ci dessous.</p>
             <form @submit.prevent="submit" class="my-12 flex flex-col">
-                <div class="flex justify-center mb-4">
-                    <div class="flex flex-col mx-4">
+                <div class="flex flex-col md:flex-row items-center md:justify-center mb-4">
+                    <div class="flex flex-col mx-4 w-full md:w-auto">
                         <label for="bfpFormSize" class="mb-1.5 font-normal text-sm">Taille en cm</label>
-                        <input v-model="form.size" type="number" id="bfpFormSize" min="90" max="260" placeholder="175" class="w-40 h-9 [appearance:textfield] pl-5">
+                        <input v-model="form.size" type="number" id="bfpFormSize" min="90" max="260" placeholder="175" class="w-full md:w-40 h-12 md:h-9 [appearance:textfield] pl-5 mb-4 md:mb-0">
                         <span v-for="(error, ind) in v$.size.$errors" :key="'errorBfpSize' + ind" class="text-error pl-0.5">
                             {{ error.$message }}
                         </span>
                     </div>
-                    <div class="flex flex-col mx-4">
+                    <div class="flex flex-col mx-4 w-full md:w-auto">
                         <label for="bfpFormWeight" class="mb-1.5 font-normal text-sm">Poids en kg</label>
-                        <input v-model="form.weight" type="number" id="bfpFormWeight" min="30" max="260" placeholder="80" class="w-40 h-9 [appearance:textfield] pl-5">
+                        <input v-model="form.weight" type="number" id="bfpFormWeight" min="30" max="260" placeholder="80" class="w-full md:w-40 h-12 md:h-9 [appearance:textfield] pl-5">
                         <span v-for="(error, ind) in v$.weight.$errors" :key="'errorBfpWeight' + ind" class="text-error pl-0.5">
                             {{ error.$message }}
                         </span>
                     </div>
                 </div>
-                <div class="flex justify-center">
-                    <div class="flex flex-col mx-4">
+                <div class="flex flex-col md:flex-row items-center md:justify-center">
+                    <div class="flex flex-col mx-4 w-full md:w-auto">
                         <label for="bfpFormAge" class="mb-1.5 font-normal text-sm">Age</label>
-                        <input v-model="form.age" type="number" id="bfpFormAge" min="12" max="99" placeholder="30" class="w-40 h-9 [appearance:textfield] pl-5">
+                        <input v-model="form.age" type="number" id="bfpFormAge" min="12" max="99" placeholder="30" class="w-full md:w-40 h-12 md:h-9 [appearance:textfield] pl-5 mb-4 md:mb-0">
                         <span v-for="(error, ind) in v$.age.$errors" :key="'errorBfpSize' + ind" class="text-error pl-0.5">
                             {{ error.$message }}
                         </span>
                     </div>
-                    <div class="flex flex-col mx-4">
+                    <div class="flex flex-col mx-4 w-full md:w-auto">
                         <label for="bfpFormSexe" class="mb-1.5 font-normal text-sm">Sexe</label>
-                        <select v-model="form.sexe" id="registerSexe" class="w-40 h-9">
+                        <select v-model="form.sexe" id="registerSexe" class="py-0 w-full md:w-40 h-12 md:h-9">
                             <option value="man">Homme</option>
                             <option value="woman">Femme</option>
                         </select>
@@ -67,50 +67,50 @@
 
             <h3 class="text-center font-semibold mb-3">Si vous etes un homme</h3>
             <div class="flex flex-col">
-                <div class="flex items-center bg-gray-200 w-full h-10">
+                <div class="flex items-center bg-gray-200 w-full px-4 md:px-0 h-20 sm:h-16 md:h-10">
                     <p class="w-full text-center font-normal">Entre 18 et 24 ans, votre IMG idéal est compris entre 8% et 17%</p>
                 </div>
-                <div class="flex items-center bg-primary text-white w-full h-10">
+                <div class="flex items-center bg-primary text-white w-full px-4 md:px-0 h-20 sm:h-16 md:h-10">
                     <p class="w-full text-center font-normal">Entre 25 et 29 ans, votre IMG idéal est compris entre 11% et 18%</p>
                 </div>
-                <div class="flex items-center bg-gray-200 w-full h-10">
+                <div class="flex items-center bg-gray-200 w-full px-4 md:px-0 h-20 sm:h-16 md:h-10">
                     <p class="w-full text-center font-normal">Entre 30 et 39 ans, votre IMG idéal est compris entre 12% et 19%</p>
                 </div>
-                <div class="flex items-center bg-primary text-white w-full h-10">
+                <div class="flex items-center bg-primary text-white w-full px-4 md:px-0 h-20 sm:h-16 md:h-10">
                     <p class="w-full text-center font-normal">Entre 40 et 44 ans, votre IMG idéal est compris entre 13% et 21%</p>
                 </div>
-                <div class="flex items-center bg-gray-200 w-full h-10">
+                <div class="flex items-center bg-gray-200 w-full px-4 md:px-0 h-20 sm:h-16 md:h-10">
                     <p class="w-full text-center font-normal">Entre 45 et 49 ans, votre IMG idéal est compris entre 15% et 22%</p>
                 </div>
-                <div class="flex items-center bg-primary text-white w-full h-10">
+                <div class="flex items-center bg-primary text-white w-full px-4 md:px-0 h-20 sm:h-16 md:h-10">
                     <p class="w-full text-center font-normal">Entre 50 et 59 ans, votre IMG idéal est compris entre 17% et 24%</p>
                 </div>
-                <div class="flex items-center bg-gray-200 w-full h-10">
+                <div class="flex items-center bg-gray-200 w-full px-4 md:px-0 h-20 sm:h-16 md:h-10">
                     <p class="w-full text-center font-normal">A partir de 60 ans, votre IMG idéal est compris entre 19% et 26%</p>
                 </div>
             </div>
             
             <h3 class="text-center font-semibold mt-4 mb-3">Si vous etes une femme</h3>
             <div class="flex flex-col">
-                <div class="flex items-center bg-gray-200 w-full h-10">
+                <div class="flex items-center bg-gray-200 w-full px-4 md:px-0 h-20 sm:h-16 md:h-10">
                     <p class="w-full text-center font-normal">Entre 18 et 24 ans, votre IMG idéal est compris entre 22% et 29%</p>
                 </div>
-                <div class="flex items-center bg-primary text-white w-full h-10">
+                <div class="flex items-center bg-primary text-white w-full px-4 md:px-0 h-20 sm:h-16 md:h-10">
                     <p class="w-full text-center font-normal">Entre 25 et 29 ans, votre IMG idéal est compris entre 23% et 30%</p>
                 </div>
-                <div class="flex items-center bg-gray-200 w-full h-10">
+                <div class="flex items-center bg-gray-200 w-full px-4 md:px-0 h-20 sm:h-16 md:h-10">
                     <p class="w-full text-center font-normal">Entre 30 et 39 ans, votre IMG idéal est compris entre 24% et 31%</p>
                 </div>
-                <div class="flex items-center bg-primary text-white w-full h-10">
+                <div class="flex items-center bg-primary text-white w-full px-4 md:px-0 h-20 sm:h-16 md:h-10">
                     <p class="w-full text-center font-normal">Entre 40 et 44 ans, votre IMG idéal est compris entre 25% et 33%</p>
                 </div>
-                <div class="flex items-center bg-gray-200 w-full h-10">
+                <div class="flex items-center bg-gray-200 w-full px-4 md:px-0 h-20 sm:h-16 md:h-10">
                     <p class="w-full text-center font-normal">Entre 45 et 49 ans, votre IMG idéal est compris entre 27% et 34%</p>
                 </div>
-                <div class="flex items-center bg-primary text-white w-full h-10">
+                <div class="flex items-center bg-primary text-white w-full px-4 md:px-0 h-20 sm:h-16 md:h-10">
                     <p class="w-full text-center font-normal">Entre 50 et 59 ans, votre IMG idéal est compris entre 29% et 36%</p>
                 </div>
-                <div class="flex items-center bg-gray-200 w-full h-10">
+                <div class="flex items-center bg-gray-200 w-full px-4 md:px-0 h-20 sm:h-16 md:h-10">
                     <p class="w-full text-center font-normal">A partir de 60 ans, votre IMG idéal est compris entre 31% et 38%</p>
                 </div>
             </div>
