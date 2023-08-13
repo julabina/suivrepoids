@@ -72,14 +72,14 @@
     <div class="relative bg-gray-100 pt-5">
         <Link :href="route('home')" class="absolute text-lg left-4 transition-colors hover:transition-colors hover:text-blue-800"><p>{{ '< retour' }}</p></Link>
         <Link :href="route('login')" class="absolute text-lg text-blue-800 underline right-4 transition-colors hover:transition-colors hover:text-blue-900"><p>Se connecter</p></Link>
-        <h1 class="text-center text-3xl font-semibold">S'enregistrer</h1>
+        <h1 class="text-center text-3xl font-semibold mt-10 md:mt-0">S'enregistrer</h1>
     </div>
     <RegisterLayout>
         <Head title="Inscription" />
 
         <form @submit.prevent="submit" class="">
-            <section class="flex flex-row-reverse">
-                <div class="w-64">
+            <section class="flex flex-col md:flex-row-reverse">
+                <div class="md:w-64">
                     <InputLabel for="name" value="Prénom/pseudo" />
     
                     <TextInput
@@ -97,7 +97,7 @@
                     </span>
                 </div>
     
-                <div class="w-64 mr-6">
+                <div class="md:w-64 mt-4 md:mt-0 md:mr-6">
                     <InputLabel for="email" value="Email" />
     
                     <TextInput
@@ -117,9 +117,9 @@
                     </span>
                 </div>
             </section>
-            <section class="flex mt-4">
+            <section class="flex flex-col md:flex-row mt-4">
 
-                <div class="w-64 mr-6">
+                <div class="md:w-64 mb-4 md:mb-0 md:mr-6">
                     <InputLabel for="password" value="Mot de passe" />
                     
                     <TextInput
@@ -139,7 +139,7 @@
                     </span>
                 </div>
                 
-                <div class="w-64">
+                <div class="md:w-64">
                     <InputLabel for="password_confirmation" value="Confirmer mot de passe" />
                     
                     <TextInput
@@ -157,18 +157,18 @@
                 </div>
             </section>
 
-            <section class="flex mt-4">
-                <div class="w-64 mr-6">
+            <section class="flex flex-col md:flex-row mt-4">
+                <div class="md:w-64 mb-4 md:mb-0 md:mr-6">
                     <InputLabel for="registerSize" value="Taille en cm" />
-                    <input v-model="form.size" required min="90" max="260" type="number" id="registerSize" class="input [appearance:textfield]">
+                    <input v-model="form.size" required min="90" max="260" type="number" id="registerSize" class="input w-full [appearance:textfield]">
                     <span v-for="(error, ind) in v$.size.$errors" :key="'errorSize' + ind" class="text-error pl-0.5">
                         {{ error.$message }}
                     </span>
                 </div>
 
-                <div class="w-64">
+                <div class="md:w-64">
                     <InputLabel for="registerWeight" value="Votre poids actuel" />
-                    <input v-model="form.weight" required min="30" max="260" type="number" id="registerWeight" class="input [appearance:textfield]">
+                    <input v-model="form.weight" required min="30" max="260" type="number" id="registerWeight" class="input w-full [appearance:textfield]">
                     <span v-for="(error, ind) in v$.weight.$errors" :key="'errorWeight' + ind" class="text-error pl-0.5">
                         {{ error.$message }}
                     </span>
@@ -196,9 +196,9 @@
                 </div>
             </section>
             
-            <section class="flex flex-col mt-4">
+            <section class="flex flex-col mt-8 md:mt-4">
                 <div class="flex items-center">
-                    <input v-model="validateCGU" type="checkbox" id="registerCGU" class="h-5 w-5 border-2 border-gray-400 rounded-sm">
+                    <input v-model="validateCGU" type="checkbox" id="registerCGU" class="h-7 w-7 md:h-5 md:w-5 border-2 border-gray-400 rounded-sm">
                     <label class="ml-2" for="registerCGU">J'ai lu et j'accepte les <Link href="" class="text-blue-800 underline">Conditions Générales d'Utilisation</Link>.</label>
                 </div>
                 <span v-if="errorCGU === true" class="text-error pl-0.5">
@@ -207,7 +207,7 @@
             </section>
 
             <section class="flex justify-center">
-                <PrimaryButton class="w-44 mt-8" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <PrimaryButton class="w-full md:w-44 mt-12 md:mt-8" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Créer un compte
                 </PrimaryButton>
 

@@ -11,7 +11,7 @@ import { Link } from '@inertiajs/vue3';
         </div>
 
         <div
-            class="bg-white w-80 px-8 py-10 rounded shadow-xl"
+            class="bg-white w-full md:w-80 px-8 py-10 rounded shadow-xl"
         >
             <slot />
         </div>

@@ -33,7 +33,7 @@ const submit = () => {
     <div class="relative bg-gray-100 pt-5">
         <Link :href="route('home')" class="absolute text-lg left-4 transition-colors hover:transition-colors hover:text-blue-800"><p>{{ '< retour' }}</p></Link>
         <Link :href="route('register')" class="absolute text-lg text-blue-800 underline right-4 transition-colors hover:transition-colors hover:text-blue-900"><p>Créer un compte</p></Link>
-        <h1 class="text-center text-3xl font-semibold">Se connecter</h1>
+        <h1 class="text-center text-3xl font-semibold mt-10 md:mt-0">Se connecter</h1>
     </div>
     <GuestLayout>
         <Head title="Se connecter" />
