@@ -1,4 +1,9 @@
 <template>
+    <!-- 
+        ////////////////////////////////
+        CREATE COMPONENT FOR REPEAT CODE
+        ////////////////////////////////
+     -->
     <div v-if="windowsWidth > 767" class="flex justify-between max-w-7xl mx-auto h-full px-8">
         <Link :href="route('home')"><section class="flex items-center h-full">
             <img src="../../assets/weight-icon.jpg" alt="app icon" class="h-5 mr-1.5">
