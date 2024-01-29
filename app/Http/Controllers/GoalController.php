@@ -14,8 +14,10 @@ class GoalController extends Controller
 {
     public function show(Request $request): Response
     {
-        $goals = Goal::where('user_id', $request->user()->id)->orderBy('created_at', 'desc')->get();
-        $lastInfo = WeightInfo::where('user_id', $request->user()->id)->orderBy('record_date', 'desc')->first();
+        $userId = $request->user()->id;
+
+        $goals = Goal::where('user_id', $userId)->orderBy('created_at', 'desc')->get();
+        $lastInfo = WeightInfo::where('user_id', $userId)->orderBy('record_date', 'desc')->first();
 
         return Inertia::render('Goals', [
             'goals' => $goals,

@@ -199,7 +199,7 @@
             <section class="flex flex-col mt-8 md:mt-4">
                 <div class="flex items-center">
                     <input v-model="validateCGU" type="checkbox" id="registerCGU" class="h-7 w-7 md:h-5 md:w-5 border-2 border-gray-400 rounded-sm">
-                    <label class="ml-2" for="registerCGU">J'ai lu et j'accepte les <Link href="" class="text-blue-800 underline">Conditions Générales d'Utilisation</Link>.</label>
+                    <label class="ml-2" for="registerCGU">J'ai lu et j'accepte les <Link :href="route('legals.cgu')" class="text-blue-800 underline">Conditions Générales d'Utilisation</Link>.</label>
                 </div>
                 <span v-if="errorCGU === true" class="text-error pl-0.5">
                     Vous devez accepter les conditions générales d'utilisation.
