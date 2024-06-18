@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+
 use function Pest\Laravel\actingAs;
 
 it('display the home page when user is logged in', function () {

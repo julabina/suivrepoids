@@ -12,17 +12,17 @@
                 <p class="font-bold text-3xl">{{ lastInfo.weight }}</p>
                 <p class="font-light text-xs">Cliquer pour ajouter un nouveau poids.</p>
             </div>
-            <Link :href="route('calcul.bmi')" class="bg-white rounded-sm shadow-xl md:w-1/3 h-36 mb-8 md:mb-0 md:mx-2 hover:border cursor-pointer"><div class="flex flex-col items-center pt-6 h-full">
+            <Link :href="route('calcul.bmi')" as="button" class="bg-white rounded-sm shadow-xl md:w-1/3 h-36 mb-8 md:mb-0 md:mx-2 hover:border cursor-pointer"><div class="flex flex-col items-center pt-6 h-full">
                 <h2 class="font-medium mb-3">Votre IMC</h2>
                 <p class="font-bold text-3xl">{{ lastInfo.bmi }}</p>
             </div></Link>
-            <Link :href="route('calcul.bfp')" class="bg-white rounded-sm shadow-xl md:w-1/3 h-36 mb-8 md:mb-0 md:ml-4 hover:border cursor-pointer"><div class="flex flex-col items-center pt-6 h-full">
+            <Link :href="route('calcul.bfp')" as="button" class="bg-white rounded-sm shadow-xl md:w-1/3 h-36 mb-8 md:mb-0 md:ml-4 hover:border cursor-pointer"><div class="flex flex-col items-center pt-6 h-full">
                 <h2 class="font-medium mb-3">Votre IMG</h2>
                 <p class="font-bold text-3xl">{{ lastInfo.bfp }}%</p>
             </div></Link>
         </section>
 
-        <Link :href="route('goal.show')"><section :class="goal.success === true ? 'flex flex-col items-center justify-between px-4 md:px-0 py-6 bg-green-400 rounded-sm shadow-xl text-center lg:w-[810px] mb-8 md:h-40 mx-[4%] lg:mx-auto hover:border cursor-pointer' : 'flex flex-col items-center justify-between px-4 md:px-0 py-6 bg-white rounded-sm shadow-xl text-center lg:w-[810px] mb-8 md:h-40 mx-[4%] lg:mx-auto hover:border cursor-pointer'">
+        <Link :href="route('goal.show')"><section :class="goal && goal.success === true ? 'flex flex-col items-center justify-between px-4 md:px-0 py-6 bg-green-400 rounded-sm shadow-xl text-center lg:w-[810px] mb-8 md:h-40 mx-[4%] lg:mx-auto hover:border cursor-pointer' : 'flex flex-col items-center justify-between px-4 md:px-0 py-6 bg-white rounded-sm shadow-xl text-center lg:w-[810px] mb-8 md:h-40 mx-[4%] lg:mx-auto hover:border cursor-pointer'">
             <div v-if="goal === null" class="flex flex-col items-center">
                 <h2 class="font-medium">Vous pouvez définir un objectif ici !!</h2>
             </div>
@@ -54,7 +54,7 @@
                         <p class="font-semibold text-center w-1/6 md:w-1/5">IMG</p>
                         <p class="w-1/6 md:w-1/5"></p>
                     </li>
-                    <WeightLog v-for="(log, ind) in infos.reverse()" :key="'weightLog' + ind" :log="log" :index="ind" />
+                    <WeightLog v-for="(log, ind) in infos" :key="'weightLog' + ind" :log="log" :index="ind" />
                 </ul>
                 <div v-else-if="tab === 'chart'" class="">
                     <GoogleChart :infos="infos" :years="years"/>
@@ -94,6 +94,7 @@
         lastInfo: Object,
         goal: Object,
         years: Array,
+        alreadyNewWeight: Boolean,
     });
 
     const form = useForm({
@@ -114,7 +115,7 @@
         const currentDate = new Date();
         const date = new Date(props.lastInfo.record_date);
         
-        if (currentDate.toDateString() === date.toDateString()) {
+        if (props.alreadyNewWeight === true || currentDate.toDateString() === date.toDateString()) {
            alreadyNewWeight.value = true;
         }
     });

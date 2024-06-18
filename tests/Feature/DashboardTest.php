@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\WeightInfo;
 use App\Services\CalculateService;
 use Inertia\Testing\AssertableInertia;
+
 use function Pest\Laravel\actingAs;
 
 it('display the dashboard page if user is logged', function () {

@@ -6,6 +6,7 @@ use App\Models\Goal;
 use App\Models\User;
 use App\Models\WeightInfo;
 use Inertia\Testing\AssertableInertia;
+
 use function Pest\Laravel\actingAs;
 
 it('display the goal page if user is logged', function () {

@@ -5,7 +5,7 @@
         <template #header/>
 
         <div class="pt-24 lg:pt-28">
-            <section class="flex flex-col items-center justify-between py-7 px-9 bg-white rounded-sm shadow-xl lg:w-[600px] mb-12 mx-[4%] lg:mx-auto">
+            <section v-if="goals.length > 0" class="flex flex-col items-center justify-between py-7 px-9 bg-white rounded-sm shadow-xl lg:w-[600px] mb-12 mx-[4%] lg:mx-auto">
                 <h2 class="subtitle text-center">Mon objectif actuel</h2>
                 <p class="flex justify-center items-center border border-black border-opacity-50 w-full h-14 mt-12 mb-4">
                     {{ 
@@ -50,7 +50,7 @@
                 </div>
             </section>        
             
-            <section class="flex flex-col items-center justify-between py-7 px-9 bg-white rounded-sm shadow-xl lg:w-[600px] mb-12 mx-[4%] lg:mx-auto">
+            <section v-if="goals.length > 1" class="flex flex-col items-center justify-between py-7 px-9 bg-white rounded-sm shadow-xl lg:w-[600px] mb-12 mx-[4%] lg:mx-auto">
                 <h2 class="subtitle text-center mb-6">Mes anciens objectifs</h2>
                 <Goal v-for="(goal, ind) in goals" :key="'goalCard' + ind" :goal="goal" />
             </section>        
